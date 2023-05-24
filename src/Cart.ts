@@ -1,7 +1,7 @@
 import Buyable from "./Buyable";
 
 export default class Cart {
-  private items: Buyable[] = [];
+  items: Buyable[] = [];
 
   add(item: Buyable): void {
     this.items.push(item);
@@ -12,7 +12,7 @@ export default class Cart {
   }
 
   countAll(): number {
-    return this.items.reduce((acc, item) => acc += item.price);
+    return this.items.reduce((acc: number, item: Buyable) => acc += item.price, 0);
   }
 
   countAllWithDiscount(discount: number): number {
@@ -20,8 +20,7 @@ export default class Cart {
     return allItemsPrice * (1 - discount / 100);
   }
 
-  delete(item: Buyable): void {
-    let index = this.items.findIndex(item);
-    this.items.splice(index, 1);
+  delete(id: number): void {
+    this.items = this.items.filter((item: Buyable) => item.id !== id);
   }
 }

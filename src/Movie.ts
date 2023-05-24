@@ -1,5 +1,4 @@
 import Buyable from './Buyable';
-import Cart from './Cart';
 
 export default class Movie implements Buyable {
   constructor(
